@@ -1,0 +1,7 @@
+<p>{{ question.getTitle() }}</p>
+<div class="container" [ngSwitch]="question.answerType">
+  <div *ngSwitchCase="'bool'">Answer is Yes or No</div>
+  <div *ngSwitchCase="'choice'">Answer is radio</div>
+  <div *ngSwitchCase="'options'">Answer is options</div>
+  <div *ngSwitchDefault>Answer is something else</div>
+</div>
