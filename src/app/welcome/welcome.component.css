@@ -1,13 +1,6 @@
 .quest {
   margin: 0;
-  padding: 50px 0 0 40px;
-  text-align: center;
-}
-
-.quest__header {
-  margin: 0 auto;
-  margin-bottom: 20px;
-  color: #212121;
+  padding: 50px 0 0 0;
 }
 
 .button {

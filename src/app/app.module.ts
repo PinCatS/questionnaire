@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { ResultsComponent } from './results/results.component';
 
 import { QUESTIONS } from './app.data';
 import { Question } from './question.model';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+
+import { appStoreProviders } from './app.store';
 
 @NgModule({
   declarations: [
@@ -20,8 +24,9 @@ import { Question } from './question.model';
     OutroComponent,
     QuestionComponent,
     ResultsComponent,
+    ProgressBarComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [
     {
       provide: QUESTIONS,
@@ -37,6 +42,8 @@ import { Question } from './question.model';
         });
       },
     },
+    { provide: 'NUMBER_OF_QUESTIONS', useValue: QUESTIONS.length },
+    appStoreProviders,
   ],
   bootstrap: [AppComponent],
 })

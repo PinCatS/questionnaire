@@ -1,3 +1,38 @@
-<h2>Вопрос</h2>
-<question *ngIf="!isEnd()" [question]="getCurrentQuestion()"></question>
-<button (click)="nextQuestion()">Дальше</button>
+<div class="questionnaire">
+  <progress-bar [count]="question.id"></progress-bar>
+  <div [hidden]="isEnd()">
+    <form
+      #f="ngForm"
+      (ngSubmit)="onSubmit(f.value)"
+      [ngSwitch]="question.answerType"
+    >
+      <h2 class="form__heading">{{ question.getTitle() }}</h2>
+      <fieldset *ngSwitchCase="'bool'">
+        <input type="radio" name="choice" id="yes" value="Да" ngModel />
+        <label for="yes">Да</label>
+        <input type="radio" name="choice" id="no" value="Нет" ngModel />
+        <label for="no">Нет</label>
+      </fieldset>
+      <fieldset *ngSwitchCase="'choice'">
+        <div *ngFor="let answer of question.answers; let idx = index">
+          <input type="radio" name="choice" id="idx" [value]="answer" ngModel />
+          <label for="idx">{{ answer }}</label>
+        </div>
+      </fieldset>
+      <fieldset *ngSwitchCase="'options'">
+        <div *ngFor="let answer of question.answers; let idx = index">
+          <input
+            type="checkbox"
+            [name]="answer"
+            id="idx"
+            [value]="answer"
+            ngModel
+          />
+          <label for="idx">{{ answer }}</label>
+        </div>
+      </fieldset>
+      <fieldset *ngSwitchDefault>Answer is something else</fieldset>
+      <button type="submit">Дальше</button>
+    </form>
+  </div>
+</div>

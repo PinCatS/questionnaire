@@ -1,4 +1,11 @@
-.content {
+.app {
   max-width: 720px;
   margin: 0 auto;
+  padding-top: 80px;
+}
+
+.app__header {
+  margin: 0 auto;
+  margin-bottom: 20px;
+  color: #212121;
 }
