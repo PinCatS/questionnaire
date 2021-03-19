@@ -6,7 +6,6 @@ import { AppState } from '../app.state';
 import * as AnswersActions from '../answers/answers.actions';
 import { QUESTIONS } from '../app.data';
 import { Question } from '../question.model';
-import { answersReducer } from '../answers/answers.reducer';
 
 @Component({
   selector: 'app-questionnaire',
@@ -25,13 +24,10 @@ export class QuestionnaireComponent implements OnInit {
   ) {
     this.currentQuestionIdx = 0;
     this.question = this.questions[this.currentQuestionIdx];
-    store.subscribe(() => this.readState());
-    this.readState();
   }
 
   readState() {
     const state: AppState = this.store.getState() as AppState;
-    console.log(state.answers);
   }
 
   onSubmit(value: any) {
@@ -39,8 +35,8 @@ export class QuestionnaireComponent implements OnInit {
       this.question.answerType == 'options'
         ? this.convertAnswerToString(value)
         : value['choice'];
+
     this.store.dispatch(AnswersActions.addAnswer(this.question.id, answer));
-    console.log('Answer: ', JSON.stringify(value));
 
     this.nextQuestion();
   }
@@ -67,5 +63,8 @@ export class QuestionnaireComponent implements OnInit {
     return this.currentQuestionIdx >= this.questions.length;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.store.subscribe(() => this.readState());
+    this.readState();
+  }
 }

@@ -1,1 +1,6 @@
-<p>results works!</p>
+<ul>
+  <li *ngFor="let question of questions">
+    {{ question.getTitle() }}
+    Answers: {{ getAnswer(question.id) }}
+  </li>
+</ul>
