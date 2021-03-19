@@ -7,6 +7,10 @@
 - Angular 11
 - Redux
 
+## Как посмотреть
+
+- You can open it by going to the project's github.io page [Опросник](https://pincats.github.io/questionnaire/)
+
 ## Как запустить
 
 - Скачать или клонировать репозиторий на локальный компьютер
