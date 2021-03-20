@@ -1,5 +1,5 @@
 <div class="questionnaire">
-  <progress-bar [count]="question.id"></progress-bar>
+  <progress-bar [currentQuestionId]="question.id"></progress-bar>
   <div [hidden]="isEnd()">
     <form
       #f="ngForm"

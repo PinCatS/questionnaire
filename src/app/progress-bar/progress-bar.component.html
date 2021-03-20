@@ -1,1 +1,9 @@
-<p>{{ count }} out of {{ numberOfQuestions }}</p>
+<ul class="progress-bar">
+  <li
+    *ngFor="let i of questionsRange"
+    [ngClass]="{ 'progress-bar__cell_active': currentQuestionId >= i }"
+    class="progress-bar__cell"
+  >
+    <p>{{ i }}</p>
+  </li>
+</ul>
