@@ -1,3 +1,27 @@
 <div class="quest">
-  <button class="button" (click)="startQuest()">Начать</button>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
+    <input
+      type="text"
+      class="form-input"
+      name="user-name"
+      placeholder="Введите своё имя"
+      minlength="2"
+      maxlength="40"
+      required
+      ngModel
+    />
+    <span class="quest__input-error quest__input-error_name_user-name"></span>
+    <input
+      type="mail"
+      class="form-input"
+      name="mail"
+      placeholder="sergey.li@gmail.com"
+      minlength="2"
+      maxlength="40"
+      required
+      ngModel
+    />
+    <span class="quest__input-error quest__input-error_name_mail"></span>
+    <button type="submit" class="button">Начать</button>
+  </form>
 </div>
