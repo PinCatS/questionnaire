@@ -15,8 +15,4 @@ export class Question {
     this.answerType = answerType;
     this.answers = answers;
   }
-
-  getTitle(): string {
-    return `${this.id}. ${this.question}`;
-  }
 }

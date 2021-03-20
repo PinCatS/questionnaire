@@ -7,7 +7,6 @@ import { AppComponent } from './app.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { QuestionnaireComponent } from './questionnaire/questionnaire.component';
 import { OutroComponent } from './outro/outro.component';
-import { QuestionComponent } from './question/question.component';
 import { ResultsComponent } from './results/results.component';
 
 import { QUESTIONS } from './app.data';
@@ -22,7 +21,6 @@ import { appStoreProviders } from './app.store';
     WelcomeComponent,
     QuestionnaireComponent,
     OutroComponent,
-    QuestionComponent,
     ResultsComponent,
     ProgressBarComponent,
   ],
