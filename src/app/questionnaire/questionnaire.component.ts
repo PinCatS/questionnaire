@@ -36,6 +36,7 @@ export class QuestionnaireComponent implements OnInit {
         ? this.convertAnswerToString(value)
         : value['choice'];
 
+    console.log(answer);
     this.store.dispatch(AnswersActions.addAnswer(this.question.id, answer));
 
     this.nextQuestion();
@@ -47,7 +48,7 @@ export class QuestionnaireComponent implements OnInit {
       if (isSelected) answers.push(option);
     }
 
-    return answers.join();
+    return answers.join(', ');
   }
 
   private nextQuestion() {

@@ -1,6 +1,8 @@
-<ul>
-  <li *ngFor="let question of questions">
-    {{ question.getTitle() }}
-    Answers: {{ getAnswer(question.id) }}
+<ul class="results">
+  <li class="results__item" *ngFor="let question of questions">
+    <h2 class="results__item-header">
+      {{ question.id.toString() + ". " + question.question }}
+    </h2>
+    <p class="results__item-text">Ответ: {{ getAnswer(question.id) }}</p>
   </li>
 </ul>

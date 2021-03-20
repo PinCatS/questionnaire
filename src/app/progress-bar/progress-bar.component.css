@@ -8,6 +8,7 @@
   align-content: stretch;
   align-items: stretch;
   text-align: center;
+  color: white;
 }
 
 .progress-bar__cell {
