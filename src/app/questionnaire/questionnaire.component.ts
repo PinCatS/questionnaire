@@ -48,7 +48,7 @@ export class QuestionnaireComponent implements OnInit {
       if (isSelected) answers.push(option);
     }
 
-    return answers.join();
+    return answers.join(', ');
   }
 
   private nextQuestion() {
