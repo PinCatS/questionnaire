@@ -20,3 +20,7 @@
 .button:visited {
   outline: none;
 }
+
+.button:disabled {
+  background-color: #bdbdbd;
+}
