@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from 'redux';
 import { AppStore } from '../app.store';
-import { AppState } from '../app.reducer';
+import { AppState, getUser } from '../app.reducer';
 import * as AnswersActions from '../answers/answers.actions';
 import { QUESTIONS } from '../app.data';
 import { Question } from '../question.model';
@@ -59,5 +59,10 @@ export class QuestionnaireComponent implements OnInit {
     return this.currentQuestionIdx >= this.questions.length;
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const state = this.store.getState();
+    if (!getUser(state).user) {
+      this.router.navigateByUrl('/');
+    }
+  }
 }
