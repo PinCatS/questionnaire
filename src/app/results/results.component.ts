@@ -2,10 +2,10 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from 'redux';
 import { AppStore } from '../app.store';
-import { AppState } from '../app.state';
-import * as AnswersActions from '../answers/answers.actions';
+import { AppState, getAnswers, getUser } from '../app.reducer';
 import { QUESTIONS } from '../app.data';
 import { Question } from '../question.model';
+import { User } from '../user/user.model';
 
 @Component({
   selector: 'app-results',
@@ -14,23 +14,27 @@ import { Question } from '../question.model';
 })
 export class ResultsComponent implements OnInit {
   answers: any;
+  user!: User | null;
 
   constructor(
     @Inject(QUESTIONS) public questions: Question[],
     @Inject(AppStore) private store: Store<AppState>
-  ) {
-    this.answers = this.getAnswers();
-  }
-
-  getAnswers(): Object {
-    const state: AppState = this.store.getState() as AppState;
-    console.log(state.answers);
-    return state.answers;
-  }
+  ) {}
 
   getAnswer(id: number): string {
     return this.answers[id];
   }
 
-  ngOnInit(): void {}
+  readState() {
+    const state = this.store.getState();
+    const answers = getAnswers(state);
+    console.log(answers);
+  }
+
+  ngOnInit(): void {
+    const state = this.store.getState();
+    this.answers = getAnswers(state);
+    this.user = getUser(state).user;
+    console.log(this.user, this.answers);
+  }
 }

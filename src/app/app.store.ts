@@ -1,7 +1,6 @@
 import { InjectionToken } from '@angular/core';
 import { Store, createStore } from 'redux';
-import { AppState } from './app.state';
-import { answersReducer as reducer } from './answers/answers.reducer';
+import { AppState, default as reducer } from './app.reducer';
 
 export const AppStore = new InjectionToken('App.store');
 
