@@ -1,13 +1,16 @@
-import { Reducer, Action } from 'redux';
-import { AppState } from '../app.state';
+import { Action } from 'redux';
 import * as AnswersActions from './answers.actions';
 
-const initialState: AppState = { answers: {} };
+export interface AnswersState {
+  answers: Object | null;
+}
 
-export const answersReducer: Reducer<AppState> = (
-  state: AppState = initialState,
+const initialState: AnswersState = { answers: null };
+
+export const AnswersReducer = function (
+  state: AnswersState = initialState,
   action: Action
-): AppState => {
+): AnswersState {
   switch (action.type) {
     case AnswersActions.ADD_ANSWER:
       const answer: string = (<AnswersActions.AddAnswerAction>action).answer;
@@ -20,3 +23,5 @@ export const answersReducer: Reducer<AppState> = (
       return state;
   }
 };
+
+export const getAnswers = (state: any): AnswersState => state.answers;

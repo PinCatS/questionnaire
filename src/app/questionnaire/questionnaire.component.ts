@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from 'redux';
 import { AppStore } from '../app.store';
-import { AppState } from '../app.state';
+import { AppState } from '../app.reducer';
 import * as AnswersActions from '../answers/answers.actions';
 import { QUESTIONS } from '../app.data';
 import { Question } from '../question.model';
@@ -26,17 +26,12 @@ export class QuestionnaireComponent implements OnInit {
     this.question = this.questions[this.currentQuestionIdx];
   }
 
-  readState() {
-    const state: AppState = this.store.getState() as AppState;
-  }
-
   onSubmit(value: any) {
     const answer =
       this.question.answerType == 'options'
         ? this.convertAnswerToString(value)
         : value['choice'];
 
-    console.log(answer);
     this.store.dispatch(AnswersActions.addAnswer(this.question.id, answer));
 
     this.nextQuestion();
@@ -64,8 +59,5 @@ export class QuestionnaireComponent implements OnInit {
     return this.currentQuestionIdx >= this.questions.length;
   }
 
-  ngOnInit(): void {
-    this.store.subscribe(() => this.readState());
-    this.readState();
-  }
+  ngOnInit(): void {}
 }

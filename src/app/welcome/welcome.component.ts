@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 import { Router } from '@angular/router';
+import { Store } from 'redux';
+import { AppStore } from '../app.store';
+import { AppState } from '../app.reducer';
+import * as UserActions from '../user/user.actions';
+import { User } from '../user/user.model';
 
 /**
  * TODO:
- * 1. Style user input
  * 2. Save user information and start in the store
- * 3. Make fields required
- * 4. Check input errors
- * 5. Disable submit button and show errors
  * 6. Show name in outro and in Results
  * 7. Redirect to welcome in case !isStarted and user navigated via link
  * 8. When user reached results, set isStarted to false
@@ -24,19 +25,19 @@ import { Router } from '@angular/router';
   styleUrls: ['./welcome.component.css'],
 })
 export class WelcomeComponent implements OnInit {
-  isStarted: boolean;
   userName!: string;
   mail!: string;
 
-  constructor(private router: Router) {
-    this.isStarted = false;
-  }
+  constructor(
+    private router: Router,
+    @Inject(AppStore) private store: Store<AppState>
+  ) {}
 
   onSubmit(value: any) {
-    this.isStarted = true;
-    this.userName = value['user-name'];
-    this.mail = value['mail'];
-    console.log(this.isStarted, this.userName, this.mail);
+    const user: User = new User(value['user-name'], value['mail']);
+    console.log(user);
+    this.store.dispatch(UserActions.setUser(user));
+
     this.router.navigateByUrl('/questions');
   }
 

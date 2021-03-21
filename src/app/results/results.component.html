@@ -1,8 +1,11 @@
+<h2 *ngIf="user">
+  Пользователь: {{ user.getName() + " (" + user.getMail() + ")" }}
+</h2>
 <ul class="results">
   <li class="results__item" *ngFor="let question of questions">
-    <h2 class="results__item-header">
+    <h3 class="results__item-header">
       {{ question.id.toString() + ". " + question.question }}
-    </h2>
+    </h3>
     <p class="results__item-text">Ответ: {{ getAnswer(question.id) }}</p>
   </li>
 </ul>
