@@ -32,6 +32,6 @@ export class ResultsComponent implements OnInit {
     if (!this.user) {
       this.router.navigateByUrl('/');
     }
-    this.answers = getAnswers(state);
+    this.answers = getAnswers(state).answers;
   }
 }
