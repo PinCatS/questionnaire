@@ -3,18 +3,19 @@ import { Router } from '@angular/router';
 
 /**
  * TODO:
- * 1. Save user information and start in the store
- * 2. Make fields required
- * 3. Check input errors
- * 4. Disable submit button and show errors
- * 5. Show name in outro and in Results
- * 6. Redirect to welcome in case !isStarted and user navigated via link
- * 7. When user reached results, set isStarted to false
- * 8. Make progress bar clickable
- * 9. Let users navigate and update the answer
- * 10. Add more 2 questions
- * 11. Add list of questions to the store
- * 12. Split questionnaire into smaller components
+ * 1. Style user input
+ * 2. Save user information and start in the store
+ * 3. Make fields required
+ * 4. Check input errors
+ * 5. Disable submit button and show errors
+ * 6. Show name in outro and in Results
+ * 7. Redirect to welcome in case !isStarted and user navigated via link
+ * 8. When user reached results, set isStarted to false
+ * 9. Make progress bar clickable
+ * 10. Let users navigate and update the answer
+ * 11. Add more 2 questions
+ * 12. Add list of questions to the store
+ * 13. Split questionnaire into smaller components
  */
 
 @Component({

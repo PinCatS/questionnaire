@@ -1,27 +1,52 @@
 <div class="quest">
   <form #f="ngForm" (ngSubmit)="onSubmit(f.value)">
-    <input
-      type="text"
-      class="form-input"
-      name="user-name"
-      placeholder="Введите своё имя"
-      minlength="2"
-      maxlength="40"
-      required
-      ngModel
-    />
-    <span class="quest__input-error quest__input-error_name_user-name"></span>
-    <input
-      type="mail"
-      class="form-input"
-      name="mail"
-      placeholder="sergey.li@gmail.com"
-      minlength="2"
-      maxlength="40"
-      required
-      ngModel
-    />
-    <span class="quest__input-error quest__input-error_name_mail"></span>
-    <button type="submit" class="button">Начать</button>
+    <h2 class="quest__header">Введите Ваше имя и адрес почты</h2>
+    <fieldset class="quest__user-info">
+      <label class="quest__input-label" for="user-name">ФИО</label>
+      <input
+        id="user-name"
+        type="text"
+        class="form-input"
+        name="user-name"
+        placeholder="Сергей Ли"
+        minlength="2"
+        maxlength="40"
+        required
+        ngModel
+        #userNameInput="ngModel"
+      />
+      <span
+        class="quest__input-error"
+        [ngClass]="{
+          'quest__input-error_hidden':
+            userNameInput.valid || userNameInput.pristine
+        }"
+        >Обязательное поле. Минимум 2 символа.</span
+      >
+      <label class="quest__input-label" for="user-mail">Почта</label>
+      <input
+        id="user-mail"
+        type="email"
+        class="form-input"
+        name="mail"
+        placeholder="sergey.li@gmail.com"
+        minlength="2"
+        maxlength="40"
+        required
+        ngModel
+        #mailInput="ngModel"
+      />
+      <span
+        [ngClass]="{
+          'quest__input-error_hidden':
+            userNameInput.valid || userNameInput.pristine
+        }"
+        class="quest__input-error"
+        >Обязательное поле.</span
+      >
+    </fieldset>
+    <button type="submit" class="button" [disabled]="!f.form.valid">
+      Начать
+    </button>
   </form>
 </div>
