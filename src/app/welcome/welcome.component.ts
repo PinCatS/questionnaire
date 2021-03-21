@@ -8,8 +8,6 @@ import { User } from '../user/user.model';
 
 /**
  * TODO:
- * 2. Save user information and start in the store
- * 6. Show name in outro and in Results
  * 7. Redirect to welcome in case !isStarted and user navigated via link
  * 8. When user reached results, set isStarted to false
  * 9. Make progress bar clickable

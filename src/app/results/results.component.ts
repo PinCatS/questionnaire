@@ -17,6 +17,7 @@ export class ResultsComponent implements OnInit {
   user!: User | null;
 
   constructor(
+    private router: Router,
     @Inject(QUESTIONS) public questions: Question[],
     @Inject(AppStore) private store: Store<AppState>
   ) {}
@@ -25,16 +26,12 @@ export class ResultsComponent implements OnInit {
     return this.answers[id];
   }
 
-  readState() {
-    const state = this.store.getState();
-    const answers = getAnswers(state);
-    console.log(answers);
-  }
-
   ngOnInit(): void {
     const state = this.store.getState();
-    this.answers = getAnswers(state);
     this.user = getUser(state).user;
-    console.log(this.user, this.answers);
+    if (!this.user) {
+      this.router.navigateByUrl('/');
+    }
+    this.answers = getAnswers(state);
   }
 }
