@@ -1,7 +1,7 @@
 export const QUESTIONS = [
   {
     id: 1,
-    question: 'Есть ли у вас резервный фонд?',
+    question: 'Ведёте ли вы учёт своих денежных средств ?',
     answer: {
       type: 'bool',
       options: null,
@@ -9,6 +9,22 @@ export const QUESTIONS = [
   },
   {
     id: 2,
+    question: 'Есть ли у вас резервный фонд ?',
+    answer: {
+      type: 'bool',
+      options: null,
+    },
+  },
+  {
+    id: 3,
+    question: 'Какими инвестиционными инструментами вы пользуетесь?',
+    answer: {
+      type: 'options',
+      options: ['Акции', 'Облигации', 'ETF', 'Недвижимость'],
+    },
+  },
+  {
+    id: 4,
     question:
       'Примерно через сколько лет вы планируете начать жить на пассивный доход?',
     answer: {
@@ -22,11 +38,11 @@ export const QUESTIONS = [
     },
   },
   {
-    id: 3,
-    question: 'Какими инвестиционными инструментами вы пользуетесь?',
+    id: 5,
+    question: 'С какими из приведённых льгот вы знакомы?',
     answer: {
       type: 'options',
-      options: ['Акции', 'Облигации', 'ETF', 'Недвижимость'],
+      options: ['ИИС', 'ЛДВ', 'Совсем не слышал'],
     },
   },
 ];
